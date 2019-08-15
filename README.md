@@ -1,4 +1,4 @@
-# golang-one-time-passcodes
+One Time Passcodes for Golang
 
 This package provides an implementation of the following IETF RFCs, providing hash based and time based one time passwords. 
 
