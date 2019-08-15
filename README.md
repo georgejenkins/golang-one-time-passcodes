@@ -1,4 +1,5 @@
 # One Time Passcodes for Golang
+[![Build Status](https://travis-ci.com/georgejenkins/onetimepasscode.svg?branch=master)](https://travis-ci.com/georgejenkins/onetimepasscode)
 
 This package provides an implementation of the following IETF RFCs, providing hash based and time based one time passwords, plus a utility to generate crypographically secure secrets. 
 
