@@ -16,15 +16,18 @@ func ExampleGenerateHOTP() {
 
 	// movingFactor is a value that 'moves', that is, it
 	// is a value that both the client and the server are
-	// able to derrive for a specific request.
+	// able to derive for a specific request.
 	movingFactor := 123
 
 	// Generate a hash-based one time password
 	hotpCode := GenerateHOTP(
 		secret,
 		movingFactor,
+		// Generates a 6 digit OTP
 		6,
+		// Will not add a checksum digit to the end
 		false,
+		// Sets the truncation offset to 0
 		0,
 	)
 

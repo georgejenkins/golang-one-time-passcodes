@@ -1,5 +1,5 @@
-// package onetimepasscode provides an implementation of the following IETF RFCs, 
-// providing hash based and time based one time passwords. 
+// Package onetimepasscode provides an implementation of the following IETF RFCs, 
+// providing hash based and time based one time passcodes (OTP). 
 //
 // RFC4226 - HOTP: An HMAC-Based One-Time Password Algorithm
 // RFC6238 - TOTP: Time-Based One-Time Password Algorithm
@@ -60,21 +60,29 @@ func hmacSha1(key []byte, text []byte) ([]byte) {
 	return h.Sum(nil)
 }
 
-// GenerateHOTP generates an OTP value for the given
-// set of parameters.
+// GenerateHOTP returns an hash-based one time passcode.
+// This function requires that the moving factor that
+// calculates the OTP can be calcualted by both the 
+// client and the server. Alternatively, GenerateTOTP
+// uses RFC6238 to generate OTP codes based on unix
+// times, and is recommended is most circumstances. 
 //
-// secret: the shared secret
-// movingFactor: the counter, time, or other value that
-// changes on a per use basis.
-// codeDigits: the number of digits in the OTP, not 
-// including the checksum, if any.
-// addChecksum  a flag that indicates if a checksum digit
-// should be appended to the OTP.
-// truncationOffset: the offset into the MAC result to
-// begin truncation. If this value is out of the range 
+// The shared secret is a value that is pre-shared between
+// the client and the server, and must be kept secret. 
+// This value must also be unique for each client. 
+// The moving factor is a value that changes frequently,
+// but not necessarily for each authentication request. 
+// This must be a random value that both the client and 
+// server know how to calculate. The code digits is the 
+// length of the OTP to be created. The add 
+// checksum flag determines whether a checksum digit is
+// to be appended to the OTP. The truncation offset 
+// controls the offset into the MAC that truncation 
+// will begin at. If this value is out of the range 
 // of 0 ... 15, then dynamic truncation will be used.
 // Dynamic truncation is when the last 4 bits of the 
-// last byte of the MAC are used to determine the start offset.
+// last byte of the MAC are used to determine the start 
+// offset.
 func GenerateHOTP(secret []byte, movingFactor int, codeDigits int, addChecksum bool, truncationOffset int) (string)  {
 	digitsPower := [...]int {1,10,100,1000,10000,100000,1000000,10000000,100000000}
 

@@ -23,13 +23,17 @@ func ExampleGenerateTOTP() {
 	hotpCode := GenerateHOTP(
 		secret,
 		timeStep,
+		// Generates a 6 digit OTP
 		6,
+		// Will not add a checksum digit to the end
 		false,
+		// Sets the truncation offset to 0
 		0,
 	)
 
 	// Some TOTP code dependent on the time the
 	// function is invoked.
+	
 	fmt.Println(hotpCode)
 	// Output: 243384
 }
