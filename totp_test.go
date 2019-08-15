@@ -28,9 +28,10 @@ func ExampleGenerateTOTP() {
 		0,
 	)
 
+	// Some TOTP code dependent on the time the
+	// function is invoked.
 	fmt.Println(hotpCode)
-	// Output: Some TOTP code dependent on the time the
-	// function is invoked. Example: 243384
+	// Output: 243384
 }
 
 func Test_GenerateTOTP(t *testing.T) {
