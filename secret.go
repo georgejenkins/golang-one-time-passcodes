@@ -1,11 +1,10 @@
 package onetimepasscode
 
-
-import(
+import (
 	"crypto/rand"
 )
 
-// GenerateRandomBytes generates a secure random array 
+// GenerateRandomBytes generates a secure random array
 // of byteLen bytes.
 func GenerateRandomBytes(byteLen int) ([]byte, error) {
 	b := make([]byte, byteLen)
@@ -18,7 +17,7 @@ func GenerateRandomBytes(byteLen int) ([]byte, error) {
 	return b, nil
 }
 
-// GenerateSecureSecret generates a secure random seed 
+// GenerateSecureSecret generates a secure random seed
 // of recommended byte length.
 //
 // The length of the shared secret MUST be at least 128 bits.

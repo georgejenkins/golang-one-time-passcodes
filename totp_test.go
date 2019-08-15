@@ -33,7 +33,7 @@ func ExampleGenerateTOTP() {
 
 	// Some TOTP code dependent on the time the
 	// function is invoked.
-	
+
 	fmt.Println(hotpCode)
 	// Output: 243384
 }
